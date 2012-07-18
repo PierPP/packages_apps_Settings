@@ -326,9 +326,6 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
             } else if (id == R.id.operator_settings || id == R.id.manufacturer_settings ||
                     id == R.id.device_settings) {
                 Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this, target, header);
-            } else if (id == R.id.advanced_settings) {
-                if (!needsAdvancedSettings())
-                    target.remove(header);
             } else if (id == R.id.wifi_settings) {
                 // Remove WiFi Settings if WiFi service is not available.
                 if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
@@ -356,10 +353,6 @@ public class Settings extends PreferenceActivity implements ButtonBarHandler {
 
     private boolean needsDockSettings() {
         return getResources().getBoolean(R.bool.has_dock_settings);
-    }
-
-    private boolean needsAdvancedSettings() {
-        return getResources().getBoolean(R.bool.has_advanced_settings);
     }
 
     private void getMetaData() {
